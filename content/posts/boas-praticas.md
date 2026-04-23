@@ -26,7 +26,7 @@ Seguindo essas práticas, você garante que seus playbooks sejam não só funcio
       apt:
         name: apache2
         state: present
-    - name: Configurar Apache para iniciar na inicialização
+    - name: Configurar Apache para iniciar na inicializaçãoo
       service:
         name: apache2
         enabled: yes
