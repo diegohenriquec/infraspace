@@ -22,7 +22,7 @@ title = 'InfraSpace'
 
   [[menu.main]]
     name = "Artigos"
-    url = "/content/posts/"
+    url = "/posts/"
     weight = 2
 
   [[menu.main]]

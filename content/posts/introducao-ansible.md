@@ -1,5 +1,5 @@
 +++
-date = '2026-04-23T12:30:54-03:00'
+date = '2025-04-20T12:30:54-03:00'
 draft = true
 title = 'Introdução ao Ansible'
 +++
