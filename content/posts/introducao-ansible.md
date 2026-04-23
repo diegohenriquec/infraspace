@@ -1,6 +1,6 @@
 +++
 date = '2025-04-20T12:30:54-03:00'
-draft = true
+draft = false
 title = 'Introdução ao Ansible'
 +++
 # Artigo - Introdução ao Ansible
