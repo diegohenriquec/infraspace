@@ -1,6 +1,6 @@
 +++
-date = '2025-06-10:24:12-03:00'
-draft = False
+date = '2025-06-10T:24:12-03:00'
+draft = false
 title = 'Boas Praticas'
 +++
 # Boas Práticas na Criação de Playbooks
