@@ -1,0 +1,36 @@
+baseURL = 'https://example.org/'
+languageCode = 'pt-br'
+title = 'InfraSpace'
+
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
+[params]
+  defaultTheme = "dark"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Artigos"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Projetos"
+    url = "/projetos/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Sobre"
+    url = "/sobre/"
+    weight = 4

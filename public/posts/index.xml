@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on InfraSpace</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on InfraSpace</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Thu, 23 Apr 2026 12:30:54 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introdução ao Ansible</title>
+      <link>http://localhost:1313/posts/introducao-ansible/</link>
+      <pubDate>Thu, 23 Apr 2026 12:30:54 -0300</pubDate>
+      <guid>http://localhost:1313/posts/introducao-ansible/</guid>
+      <description>&lt;h1 id=&#34;artigo---introdução-ao-ansible&#34;&gt;Artigo - Introdução ao Ansible&lt;/h1&gt;
+&lt;p&gt;Gerenciar configurações de servidores e serviços em TI pode ser bastante desafiador, principalmente em ambientes de missão critica e de grande escala. Processos manuais são lentos e sujeitos a erros. O Ansible automatiza operações de TI, simplificando tarefas repetitivas. Ele permite mudanças eficientes, padronizando servidores, minimizando falhas e economizando tempo.&lt;/p&gt;
+&lt;h2 id=&#34;mas-afinal-o-que-é-o-ansible&#34;&gt;&lt;strong&gt;Mas afinal, o que é o Ansible?&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;O Ansible é uma ferramenta de automação open source adquirida pela RedHat em 2015, mas que manteve seu código aberto para toda a comunidade. Sua finalidade é automatizar o provisionamento, a gestão de configuração, a implantação de apps, a orquestração e outros processos. O legal do Ansible é sua simplicidade: não é necessário instalar agentes nos hosts que precisam ser gerenciados; ele trabalha de forma declarativa (utilizando Yaml). Basicamente, você define o estado que deseja e o Ansible faz as mudanças necessárias.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

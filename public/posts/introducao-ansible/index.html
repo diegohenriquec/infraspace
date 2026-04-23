@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Introdução ao Ansible | InfraSpace</title>
+<meta name="keywords" content="">
+<meta name="description" content="Artigo - Introdução ao Ansible
+Gerenciar configurações de servidores e serviços em TI pode ser bastante desafiador, principalmente em ambientes de missão critica e de grande escala. Processos manuais são lentos e sujeitos a erros. O Ansible automatiza operações de TI, simplificando tarefas repetitivas. Ele permite mudanças eficientes, padronizando servidores, minimizando falhas e economizando tempo.
+Mas afinal, o que é o Ansible?
+O Ansible é uma ferramenta de automação open source adquirida pela RedHat em 2015, mas que manteve seu código aberto para toda a comunidade. Sua finalidade é automatizar o provisionamento, a gestão de configuração, a implantação de apps, a orquestração e outros processos. O legal do Ansible é sua simplicidade: não é necessário instalar agentes nos hosts que precisam ser gerenciados; ele trabalha de forma declarativa (utilizando Yaml). Basicamente, você define o estado que deseja e o Ansible faz as mudanças necessárias.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/introducao-ansible/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css" integrity="sha256-R&#43;UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe&#43;v3ZDTU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/introducao-ansible/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="InfraSpace (Alt + H)">InfraSpace</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Artigos">
+                    <span>Artigos</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projetos/" title="Projetos">
+                    <span>Projetos</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/sobre/" title="Sobre">
+                    <span>Sobre</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='http://localhost:1313/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="http://localhost:1313/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      Introdução ao Ansible
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2026-04-23 12:30:54 -0300 -03'>April 23, 2026</span>&nbsp;·&nbsp;<span>4 min</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h1 id="artigo---introdução-ao-ansible">Artigo - Introdução ao Ansible<a hidden class="anchor" aria-hidden="true" href="#artigo---introdução-ao-ansible">#</a></h1>
+<p>Gerenciar configurações de servidores e serviços em TI pode ser bastante desafiador, principalmente em ambientes de missão critica e de grande escala. Processos manuais são lentos e sujeitos a erros. O Ansible automatiza operações de TI, simplificando tarefas repetitivas. Ele permite mudanças eficientes, padronizando servidores, minimizando falhas e economizando tempo.</p>
+<h2 id="mas-afinal-o-que-é-o-ansible"><strong>Mas afinal, o que é o Ansible?</strong><a hidden class="anchor" aria-hidden="true" href="#mas-afinal-o-que-é-o-ansible">#</a></h2>
+<p>O Ansible é uma ferramenta de automação open source adquirida pela RedHat em 2015, mas que manteve seu código aberto para toda a comunidade. Sua finalidade é automatizar o provisionamento, a gestão de configuração, a implantação de apps, a orquestração e outros processos. O legal do Ansible é sua simplicidade: não é necessário instalar agentes nos hosts que precisam ser gerenciados; ele trabalha de forma declarativa (utilizando Yaml). Basicamente, você define o estado que deseja e o Ansible faz as mudanças necessárias.</p>
+<p>Utilizando uma abordagem “push” de automação, em que o control node envia as instruções diretamente para os managed nodes. Isso é feito via SSH (em sistemas Unix/Linux) ou via WinRM (em sistemas Windows). Segue etapas executadas:</p>
+<p><strong>Conexão via SSH/WinRM:</strong> O Ansible estabelece uma conexão com os managed nodes usando SSH.</p>
+<p><strong>Execução das Tarefas:</strong> O Ansible executa as tarefas diretamente no host gerenciado. Essas tarefas são baseadas nos módulos do Ansible, que são pequenos scripts que realizam uma ação específica, como instalar um pacote, modificar um arquivo ou reiniciar um serviço.</p>
+<p><strong>Idempotência:</strong> O Ansible garante que cada tarefa seja idempotente. Isso significa que uma tarefa será executada apenas se for necessária para atingir o estado desejado. Por exemplo, se um pacote já estiver instalado na versão correta, o Ansible não tentará reinstalá-lo.</p>
+<p><strong>Relatório de Execução:</strong> Após a execução das tarefas, o Ansible gera um relatório mostrando o que foi alterado, o que já estava conforme o esperado e se houve algum erro.</p>
+<h2 id="como-funciona-o-ansible"><strong>Como Funciona o Ansible?</strong><a hidden class="anchor" aria-hidden="true" href="#como-funciona-o-ansible">#</a></h2>
+<p>Seguindo uma abordagem simples para realizar tarefas de automação. Sua arquitetura é baseada em três componentes principais: <strong>control node</strong>, <strong>managed nodes</strong> e <strong>playbooks</strong>.</p>
+<p><strong>Control Node:</strong> Este é o ponto central a partir do qual o Ansible é executado. O control node executa os playbooks, estabelecendo conexões com os managed nodes via SSH. É aqui que você define o que será automatizado.</p>
+<p><strong>Managed Nodes:</strong> Esses são os hosts que o Ansible gerencia. Podem ser servidores físicos, máquinas virtuais, containers ou até mesmo dispositivos de rede. Os managed nodes não necessitam de um agente específico do Ansible, apenas de conectividade SSH.</p>
+<p><strong>Playbooks:</strong> Os playbooks são conjuntos de tarefas escritas em YAML que descrevem o que deve ser feito em cada managed node. Um playbook pode conter instruções detalhadas para instalação de pacotes, configuração de serviços, atualização de software, entre outras tarefas.</p>
+<p>Demais recursos presentes e necessários para o funcionamento:</p>
+<p><strong>Inventário</strong>: É o arquivo onde você lista todos os hosts que o Ansible irá gerenciar, contém informações como endereços de IP, nome dos hosts e grupos. Um inventário pode ser estático (um simples arquivo de texto) ou dinâmico (gerado a partir de fontes como AWS ou Azure)</p>
+<p><strong>Módulos:</strong> São pequenos scritps executados pelos playbooks para realizar ações específicas, como modificar arquivos, reiniciar serviços, execução de comandos, instalar pacotes ou interagir com APIs.</p>
+<p><strong>APIs</strong>: As APIs (Application Programming Interfaces) permitem interagir e automatizar de forma programática. Elas são ferramentas úteis para integrar o Ansible em fluxos de trabalho, sistemas de automação ou em qualquer ambiente que precise de interações automáticas com o Ansible.</p>
+<p>O <strong>CMDB (Configuration Management Database)</strong> no Ansible é um repositório usado para armazenar dados de configuração e inventário sobre os managed nodes. Ele pode ser usado como uma fonte centralizada de dados para automação, permitindo que o Ansible recupere informações sobre hosts, aplicações e serviços, como variáveis, estados e configurações específicas.</p>
+<p><strong>No Ansible</strong>, o CMDB pode ser implementado de várias formas:</p>
+<ul>
+<li><strong>Dynamic Inventory</strong>: Integração com ferramentas como AWS, Azure ou Kubernetes para obter dados em tempo real.</li>
+<li><strong>Arquivos YAML ou JSON</strong>: Um CMDB simples pode ser mantido em arquivos que detalham configurações específicas dos hosts.</li>
+<li><strong>Integração com ferramentas externas</strong>: Ferramentas como ServiceNow ou Puppet podem atuar como CMDB para fornecer dados ao Ansible.</li>
+</ul>
+<p><strong>Variáveis:</strong> Permitem personalizar as execuções, passando parâmetros específicos para diferentes máquinas ou ambientes</p>
+<p><img alt="ansible-engine" loading="lazy" src="/images/ansible-engine.png"></p>
+<h3 id="estrutura-de-um-playbook"><strong>Estrutura de um Playbook</strong><a hidden class="anchor" aria-hidden="true" href="#estrutura-de-um-playbook">#</a></h3>
+<p>Abaixo, um exemplo simples de um playbook em YAML para instalar o Python em um servidor Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Instalacao Python</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">prod</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">become</span>: <span style="color:#66d9ef">yes</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tasks</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Certifique-se de que o Python esteja instalado</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">apt</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">python3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">state</span>: <span style="color:#ae81ff">present</span>
+</span></span></code></pre></div><hr>
+<p>Neste exemplo:</p>
+<ul>
+<li><code>hosts: prod</code>: O Ansible será executado nos hosts identificados como “prod”.</li>
+<li><code>become: yes</code>: Garante que as tarefas sejam executadas com privilégios de superusuário (root)</li>
+<li><code>tasks</code>: Lista de tarefas a serem executadas</li>
+<li><code>apt</code>: Usa o módulo <code>apt</code> para garantir que o Python3 esteja instalado.</li>
+</ul>
+<h2 id="conclusão"><strong>Conclusão</strong><a hidden class="anchor" aria-hidden="true" href="#conclusão">#</a></h2>
+<p>O Ansible é uma ferramenta essencial para equipes de TI que precisam gerenciar grandes infraestruturas de forma eficiente e segura. Sua arquitetura sem agentes, simplicidade na criação de playbooks e suporte a uma vasta gama de módulos o tornam ideal para automação de tarefas complexas. Com o Ansible, as equipes podem focar mais na inovação e menos na gestão manual e repetitiva de sistemas.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">InfraSpace</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
