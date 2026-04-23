@@ -1,4 +1,4 @@
-name: Deploy Hugo no GH Pages
+name: Deploy Hugo site to Pages
 
 on:
   push:
@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,11 +36,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  steps:
-    - name: Deploy
-      id: deployment
-      uses: actions/deploy-pages@v4
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
