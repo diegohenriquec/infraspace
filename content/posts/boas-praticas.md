@@ -1,5 +1,5 @@
 +++
-date = '2025-06-10T:24:12-03:00'
+date = '2025-06-21T12:30:54-03:00'
 draft = false
 title = 'Boas Praticas'
 +++
