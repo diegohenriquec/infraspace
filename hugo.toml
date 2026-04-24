@@ -1,6 +1,6 @@
 baseURL = 'https://infraspace.com.br/'
 languageCode = 'pt-br'
-title = 'InfraSpace'
+title = 'Infra Space'
 
 [module]
   [[module.imports]]
