@@ -12,6 +12,16 @@ title = 'Infra Space'
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true
   ShowBreadCrumbs = true
+[params.social]
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/seuusuario"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/seuusuario/"
+  [[params.socialIcons]]
+    name = "instagram"
+    url = "https://instagram.com/seuusuario"
 
 [params.homeInfoParams]
 enabled = false
