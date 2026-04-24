@@ -1,10 +1,8 @@
 +++
 date = '2025-06-21T12:30:54-03:00'
 draft = false
-title = 'Boas Praticas'
+title = 'Boas Práticas na Criação de Playbooks'
 +++
-# Boas Práticas na Criação de Playbooks
-
 Agora que entendemos o básico sobre o Ansible e como ele pode simplificar a automação de tarefas de TI, o próximo passo é aprender a criar playbooks de maneira eficiente e organizada. Playbooks bem estruturados não só facilitam a manutenção e a compreensão do código, mas também garantem que as automações sejam executadas de forma consistente e confiável. Mesmo em projetos de grande escala, seguir boas práticas na criação de playbooks pode fazer a diferença entre uma automação bem sucedida e um caos total.
 
 Neste post, vamos explorar algumas dicas e boas práticas que irão te ajudar a escrever playbooks de alta qualidade. Essas práticas envolvem desde a estruturação do código até o uso eficiente de variáveis e templates, passando pela modularização com roles e a documentação adequada.

@@ -3,8 +3,6 @@ date = '2025-04-20T12:30:54-03:00'
 draft = false
 title = 'Introdução ao Ansible'
 +++
-# Artigo - Introdução ao Ansible
-
 Gerenciar configurações de servidores e serviços em TI pode ser bastante desafiador, principalmente em ambientes de missão critica e de grande escala. Processos manuais são lentos e sujeitos a erros. O Ansible automatiza operações de TI, simplificando tarefas repetitivas. Ele permite mudanças eficientes, padronizando servidores, minimizando falhas e economizando tempo.
 
 ## **Mas afinal, o que é o Ansible?**
