@@ -13,6 +13,9 @@ title = 'Infra Space'
   ShowCodeCopyButtons = true
   ShowBreadCrumbs = true
 
+[params.homeInfoParams]
+enabled = false
+
 [menu]
 
   [[menu.main]]
