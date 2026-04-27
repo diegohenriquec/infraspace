@@ -36,7 +36,7 @@ Neste exemplo abordamos:
 Name: Use um nome claro e intuitivo para cada playbook e tarefa
 Hosts e become: Defina os hosts onde as tasks serão executadas e use become: yes se precisar de privilégios de superusuário (ou root para os mais íntimos do SO do Pinguim).
 Variáveis: Declare variáveis (vars) no início para facilitar a reutilização e modificação.
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Modularização de Playbooks com Roles**
 
@@ -128,7 +128,7 @@ Crie roles que possam ser reutilizadas em diferentes projetos. Por exemplo, se v
 
 Mantenha uma estrutura de diretórios organizada e use uma nomenclatura consistente para seus arquivos e diretórios. Isso facilita a navegação e a compreensão do código. Por exemplo, use nomes descritivos para suas roles, como webserver, database, load_balancer, etc. Além disso, organize as variáveis e templates em arquivos separados para manter o código limpo e organizado.e as variáveis e templates em arquivos separados para manter o código limpo e organizado.
 
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Uso Eficiente de Variáveis e Templates**
 
@@ -143,7 +143,7 @@ As variáveis e templates são ferramentas poderosas para tornar seus playbooks 
 - **Segurança**: Proteja variáveis sensíveis usando Ansible Vault. Isso garante que informações confidenciais, como senhas e chaves, não fiquem expostas.
 
 - **Variáveis de Grupo**: Utilize variáveis de grupo no inventário para definir valores comuns a todos os hosts de um grupo.
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Tasks e Handlers**
 
@@ -156,7 +156,7 @@ Tasks e handlers são os pilares dos playbooks do Ansible. Escrever tarefas clar
 - **Fail Fast:** Configure as tarefas para falharem rapidamente em caso de erro, para que problemas possam ser detectados e resolvidos rapidamente, sem afetar outras partes do playbook.
 
 - **Desempenho**: Otimize suas tarefas para que sejam executadas rapidamente, usando módulos apropriados e evitando loops desnecessários, garantindo que suas automações sejam eficientes.
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Testes e Validação**
 
@@ -170,7 +170,7 @@ Antes de colocar suas automações em produção, é super importante testar e v
 - **Testes Automatizados**: Implemente testes automatizados para validar seus playbooks e roles, utilizando ferramentas como Molecule.
 
 - **Debugging**: Use opções de debug e registro detalhado (-vvv ou -vvvv) para solucionar problemas em tarefas e handlers.
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Controle de Versão**
 
@@ -183,7 +183,7 @@ Manter o controle de versão é essencial para garantir o histórico e a integri
 - **Branches**: Use branches para desenvolver novas funcionalidades ou corrigir bugs. Isso mantém a branch principal (como main ou master) estável e facilita o gerenciamento de diferentes versões do projeto. Você pode criar uma branch para cada nova funcionalidade ou correção e, depois de testar e validar as mudanças, mesclá-las de volta na branch principal. Isso ajuda a manter o projeto organizado e sem conflitos de código.
 
 - **Pull Requests**: Sempre que for mesclar uma branch, utilize pull requests para revisar as mudanças. Isso permite que outros membros da equipe revisem o código, sugerindo melhorias e detectando possíveis problemas antes que as mudanças sejam integradas ao código principal.
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Documentação e Comentários**
 
@@ -195,7 +195,7 @@ Manter uma boa documentação e adicionar comentários é fundamental para torna
 
 Seguindo essas práticas, você garante que seu código esteja sempre bem explicado e fácil de entender, independentemente de quem for trabalhar nele.
 
-———————————————————————————————————————————
+———————————————————————————————————————
 
 **Conclusão**
 
